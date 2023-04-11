@@ -1,12 +1,11 @@
 package com.microservice.student.services;
 
 import com.google.gson.Gson;
-import com.microservice.student.models.Address;
 import com.microservice.student.models.AddressResponse;
 import com.microservice.student.models.StudentDto;
 import com.microservice.student.models.StudentEntity;
 import com.microservice.student.repositories.StudentRepository;
-import com.microservice.student.services.feign.AddressFeignClient;
+import com.microservice.student.services.feign.EurekaFeignClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -28,7 +27,7 @@ public class StudentService {
     String studentServiceUrl;
 
     @Autowired
-    AddressFeignClient addressFeignClient;
+    EurekaFeignClient eurekaFeignClient;
     public StudentDto addStudent(StudentDto studentDto) {
         try{
             // Generating new student id, from
@@ -68,7 +67,7 @@ public class StudentService {
         StudentDto studentDto = null;
         if(entity.isPresent()){
             studentDto=new StudentDto(entity.get());
-            studentDto.setAddressResponse(addressFeignClient.getAddress(studentDto.getAddressId()).getBody());
+            studentDto.setAddressResponse(eurekaFeignClient.getAddress(studentDto.getAddressId()).getBody());
         }
         return  studentDto;
     }
