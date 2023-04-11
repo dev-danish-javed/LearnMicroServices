@@ -71,7 +71,5 @@ public class StudentService {
             studentDto.setAddressResponse(addressFeignClient.getAddress(studentDto.getAddressId()).getBody());
         }
         return  studentDto;
-
-
     }
 }

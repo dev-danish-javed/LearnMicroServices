@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient( name = "address-service", path = "/address")
+@FeignClient( value = "address-service", path = "/address/address")
 public interface AddressFeignClient {
     @PostMapping
     public ResponseEntity<AddressResponse> addAddress(@RequestBody Address address) ;

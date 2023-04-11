@@ -25,6 +25,7 @@ public class AddressController {
 
     @GetMapping("{id}")
     public ResponseEntity<AddressResponse> getAddress(@PathVariable long id) {
+        System.out.println("I am address-service");
         AddressDto addressDto = addressService.getAddressById(id);
         return addressDto != null ? new ResponseEntity<>(new AddressResponse(addressDto), HttpStatus.OK) : new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
     }
