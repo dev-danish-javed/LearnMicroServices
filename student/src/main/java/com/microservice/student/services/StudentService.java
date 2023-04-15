@@ -5,7 +5,7 @@ import com.microservice.student.models.AddressResponse;
 import com.microservice.student.models.StudentDto;
 import com.microservice.student.models.StudentEntity;
 import com.microservice.student.repositories.StudentRepository;
-import com.microservice.student.services.feign.EurekaFeignClient;
+import com.microservice.student.services.feign.AddressServiceHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -16,20 +16,21 @@ import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.Optional;
 
 @Service
 public class StudentService {
 
     @Autowired
+    AddressServiceHelper addressServiceHelper;
+
+    @Autowired
     StudentRepository repository;
+
     @Value("${address.service.url}")
     String studentServiceUrl;
 
-    @Autowired
-    EurekaFeignClient eurekaFeignClient;
     public StudentDto addStudent(StudentDto studentDto) {
-        try{
+        try {
             // Generating new student id, from
             StudentEntity lastStudent = repository.getLastStudent();
             long newStudentId = lastStudent != null ? lastStudent.getId() + 1 : 0;
@@ -56,19 +57,15 @@ public class StudentService {
             //setting address in saved student
             savedStudent.setAddressResponse(address);
             return savedStudent;
+        } catch (URISyntaxException | IOException | InterruptedException ignored) {
         }
-        catch (URISyntaxException|IOException|InterruptedException ignored){}
         // in case any exception occurred
         return null;
     }
 
     public StudentDto getStudent(long id) {
-        Optional<StudentEntity> entity = repository.findById(id);
-        StudentDto studentDto = null;
-        if(entity.isPresent()){
-            studentDto=new StudentDto(entity.get());
-            studentDto.setAddressResponse(eurekaFeignClient.getAddress(studentDto.getAddressId()).getBody());
-        }
-        return  studentDto;
+        return addressServiceHelper.getStudentFromStudentService(id);
     }
+
+
 }

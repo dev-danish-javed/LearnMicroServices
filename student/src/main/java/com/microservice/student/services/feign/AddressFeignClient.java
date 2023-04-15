@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+@Deprecated
 @FeignClient( value = "address-service", path = "/address/address")
 public interface AddressFeignClient {
     @PostMapping
