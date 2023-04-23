@@ -25,9 +25,13 @@ dependencies {
 	implementation 'com.google.code.gson:gson:2.10.1'
 	implementation 'org.springframework.cloud:spring-cloud-starter-loadbalancer'
 	implementation 'io.github.resilience4j:resilience4j-spring-boot2:2.0.2'
-	implementation 'org.springframework.boot:spring-boot-starter-aop:3.0.5'
-	implementation 'org.springframework.boot:spring-boot-starter-actuator:3.0.5'
+	implementation 'org.springframework.boot:spring-boot-starter-aop'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.apache.logging.log4j:log4j-core:2.20.0'
+	implementation 'io.micrometer:micrometer-observation:1.10.6'
+	implementation 'io.micrometer:micrometer-tracing-bridge-brave'
+	implementation 'io.zipkin.reporter2:zipkin-reporter-brave:2.16.3'
+	implementation 'io.github.openfeign:feign-micrometer:12.3'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
