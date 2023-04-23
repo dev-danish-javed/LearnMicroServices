@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/LearnMicroServices.iml" filepath="$PROJECT_DIR$/LearnMicroServices.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ZipkinServer/ZipkinServer.iml" filepath="$PROJECT_DIR$/ZipkinServer/ZipkinServer.iml" />
     </modules>
   </component>
 </project>
