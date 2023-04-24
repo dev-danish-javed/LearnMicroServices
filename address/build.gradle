@@ -22,6 +22,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-actuator:3.0.6'
 	implementation 'org.springframework.boot:spring-boot-starter-aop'
 	implementation 'io.micrometer:micrometer-tracing-bridge-brave:1.0.4'
 	implementation 'io.micrometer:micrometer-observation:1.10.6'

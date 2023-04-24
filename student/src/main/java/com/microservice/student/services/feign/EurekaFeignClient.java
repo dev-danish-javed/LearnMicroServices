@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient( value = "gateway-service", path = "address-service/address/address")
+@FeignClient( value = "gateway-service", path = "address-service/address")
 public interface EurekaFeignClient {
     @PostMapping
     public ResponseEntity<AddressResponse> addAddress(@RequestBody Address address) ;
