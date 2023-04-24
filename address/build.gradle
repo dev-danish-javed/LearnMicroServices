@@ -27,6 +27,9 @@ dependencies {
 	implementation 'io.micrometer:micrometer-observation:1.10.6'
 	implementation 'io.github.openfeign:feign-micrometer:12.3'
 	implementation 'io.zipkin.reporter2:zipkin-reporter-brave:2.16.3'
+	implementation 'org.springframework.cloud:spring-cloud-starter-config:4.0.2'
+	implementation 'org.springframework.cloud:spring-cloud-config-client:4.0.2'
+	implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
